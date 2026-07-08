@@ -139,3 +139,12 @@ The normalizer removes timing fields (`span`, `duration`) and sorts all object a
 ## License
 
 Apache 2.0
+
+<!-- BEGIN gh-mutual-linking -->
+
+---
+
+### Related projects
+
+- [**cf-cache-utils**](https://github.com/didvc/cf-cache-utils) — CLI to warm and inspect Cloudflare edge cache status across all your URLs — no external dependencies, pure Node.js
+<!-- END gh-mutual-linking -->
