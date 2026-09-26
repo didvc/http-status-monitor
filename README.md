@@ -11,6 +11,8 @@ A CLI tool that runs [lychee](https://github.com/lycheeverse/lychee) against a l
 
 The core idea: shallow "is the server up?" checks miss broken CSS, 404'd JS, and dead API endpoints that lychee catches by checking every linked asset on the page. This tool wraps lychee with state tracking so you can see when anything changes, not just whether the server responds.
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## Requirements
 
 - Node.js 18+ with [tsx](https://github.com/privatenumber/tsx) (`npm install -g tsx`)

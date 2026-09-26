@@ -11,6 +11,8 @@
 
 核心想法：「伺服器還活著嗎？」這種淺層檢查，會漏掉壞掉的 CSS、404 的 JS 與失效的 API 端點；lychee 會檢查頁面上連結的每一項資源，所以能抓到這些問題。本工具為 lychee 加上狀態追蹤，讓你不只知道伺服器是否回應，也能在任何東西改變時察覺。
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## 需求
 
 - Node.js 18 以上，以及 [tsx](https://github.com/privatenumber/tsx)（`npm install -g tsx`）

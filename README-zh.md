@@ -11,6 +11,8 @@
 
 核心思路：“服务器还在线吗？”这种浅层检查，会漏掉损坏的 CSS、404 的 JS 和失效的 API 端点；lychee 会检查页面上链接的每一个资源，所以能发现这些问题。本工具为 lychee 加上状态跟踪，让你不只知道服务器是否响应，还能在任何东西发生变化时察觉。
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## 要求
 
 - Node.js 18+，以及 [tsx](https://github.com/privatenumber/tsx)（`npm install -g tsx`）

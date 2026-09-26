@@ -11,6 +11,8 @@ Un outil en ligne de commande qui exécute [lychee](https://github.com/lycheever
 
 L’idée de base : les vérifications superficielles du type « le serveur répond-il ? » ne voient ni le CSS cassé, ni le JS en 404, ni les endpoints d’API morts, que lychee repère en vérifiant chaque ressource liée de la page. Cet outil ajoute à lychee un suivi d’état, pour savoir quand quelque chose change, et pas seulement si le serveur répond.
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## Prérequis
 
 - Node.js 18+ avec [tsx](https://github.com/privatenumber/tsx) (`npm install -g tsx`)

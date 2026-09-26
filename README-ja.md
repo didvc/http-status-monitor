@@ -11,6 +11,8 @@ URLのリストに対して [lychee](https://github.com/lycheeverse/lychee) を�
 
 基本的な考え方：「サーバーは生きているか？」という表面的なチェックでは、壊れたCSS、404になったJS、応答しないAPIエンドポイントを見逃します。lychee はページからリンクされたすべてのアセットを確認するので、こうした問題も見つけられます。このツールは lychee に状態の追跡を加え、サーバーが応答するかどうかだけでなく、何かが変わったときにそれがわかるようにします。
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## 動作要件
 
 - Node.js 18以上と [tsx](https://github.com/privatenumber/tsx)（`npm install -g tsx`）

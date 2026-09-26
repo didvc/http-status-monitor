@@ -11,6 +11,8 @@ Ein CLI-Werkzeug, das [lychee](https://github.com/lycheeverse/lychee) auf eine L
 
 Die Grundidee: Oberflächliche „Ist der Server erreichbar?“-Prüfungen übersehen kaputtes CSS, JS mit 404 und tote API-Endpunkte, die lychee findet, weil es jedes verlinkte Asset der Seite prüft. Dieses Werkzeug ergänzt lychee um eine Zustandsverfolgung, sodass du siehst, wann sich irgendetwas ändert, nicht nur, ob der Server antwortet.
 
+![didvc/http-status-monitor](assets/social-preview.png)
+
 ## Voraussetzungen
 
 - Node.js 18+ mit [tsx](https://github.com/privatenumber/tsx) (`npm install -g tsx`)
