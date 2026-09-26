@@ -1,22 +1,22 @@
-English · [日本語](README-ja.md) · [繁體中文](README-zh-TW.md) · [简体中文](README-zh.md) · [Deutsch](README-de.md) · [Français](README-fr.md)
+[English](README.md) · [日本語](README-ja.md) · [繁體中文](README-zh-TW.md) · 简体中文 · [Deutsch](README-de.md) · [Français](README-fr.md)
 
 # http-status-monitor
 
 [![Docs](https://img.shields.io/badge/docs-didvc.github.io%2Fhttp--status--monitor-blue)](https://didvc.github.io/http-status-monitor/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 
-[Full documentation →](https://didvc.github.io/http-status-monitor/)
+[完整文档 →](https://didvc.github.io/http-status-monitor/)
 
-A CLI tool that runs [lychee](https://github.com/lycheeverse/lychee) against a list of URLs, tracks changes in HTTP status over time, and stores metrics in a VictoriaMetrics-compatible format.
+一个命令行工具，会对一组 URL 运行 [lychee](https://github.com/lycheeverse/lychee)，跟踪 HTTP 状态随时间的变化，并以兼容 VictoriaMetrics 的格式存储指标。
 
-The core idea: shallow "is the server up?" checks miss broken CSS, 404'd JS, and dead API endpoints that lychee catches by checking every linked asset on the page. This tool wraps lychee with state tracking so you can see when anything changes, not just whether the server responds.
+核心思路：“服务器还在线吗？”这种浅层检查，会漏掉损坏的 CSS、404 的 JS 和失效的 API 端点；lychee 会检查页面上链接的每一个资源，所以能发现这些问题。本工具为 lychee 加上状态跟踪，让你不只知道服务器是否响应，还能在任何东西发生变化时察觉。
 
-## Requirements
+## 要求
 
-- Node.js 18+ with [tsx](https://github.com/privatenumber/tsx) (`npm install -g tsx`)
-- lychee binary: download from [lycheeverse/lychee releases](https://github.com/lycheeverse/lychee/releases) and place at `./lychee-x86_64-unknown-linux-musl/lychee` (or any path, then pass `--lychee-path`)
+- Node.js 18+，以及 [tsx](https://github.com/privatenumber/tsx)（`npm install -g tsx`）
+- lychee 可执行文件：从 [lycheeverse/lychee 的发布页](https://github.com/lycheeverse/lychee/releases)下载，放在 `./lychee-x86_64-unknown-linux-musl/lychee`（或任意路径，再用 `--lychee-path` 指定）
 
-## Install
+## 安装
 
 ```sh
 git clone https://github.com/didvc/http-status-monitor
@@ -24,7 +24,7 @@ cd http-status-monitor
 npm install
 ```
 
-Download lychee and make it executable:
+下载 lychee 并设为可执行：
 
 ```sh
 mkdir -p lychee-x86_64-unknown-linux-musl
@@ -32,29 +32,29 @@ curl -L https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x8
   | tar xz -C lychee-x86_64-unknown-linux-musl
 ```
 
-## Usage
+## 用法
 
 ```
 tsx http-status-monitor.mts [options]
 ```
 
-### Options
+### 选项
 
-| Flag | Default | Description |
+| 参数 | 默认值 | 说明 |
 |---|---|---|
-| `--urls-file <path>` | `./urls.txt` | File with one URL per line |
-| `--urls <url,...>` | - | Inline comma-separated URLs (overrides `--urls-file`) |
-| `--lychee-path <path>` | auto | Explicit lychee binary path |
-| `--verbose`, `-v` | off | Show lychee output and all results |
-| `--diff` | off | Print unified diff when state changes |
-| `--interval <secs>` | `3600` | Poll interval in watch mode |
-| `--once` | off | Single run then exit |
-| `--victoriametrics` | off | Append metrics to `./data/victoriametrics/[yyyy-mm]/results.jsonl` |
-| `--wait <secs>` | `1` | Delay between consecutive URL checks |
+| `--urls-file <path>` | `./urls.txt` | 每行一个 URL 的文件 |
+| `--urls <url,...>` | - | 用逗号分隔直接指定 URL（优先于 `--urls-file`） |
+| `--lychee-path <path>` | auto | 显式指定 lychee 可执行文件路径 |
+| `--verbose`, `-v` | off | 显示 lychee 输出和所有结果 |
+| `--diff` | off | 状态变化时打印 unified diff |
+| `--interval <secs>` | `3600` | 监视模式下的轮询间隔 |
+| `--once` | off | 只运行一次然后退出 |
+| `--victoriametrics` | off | 将指标追加到 `./data/victoriametrics/[yyyy-mm]/results.jsonl` |
+| `--wait <secs>` | `1` | 连续 URL 检查之间的延迟 |
 
-### Examples
+### 示例
 
-First run (new state recorded for each URL):
+首次运行（为每个 URL 记录新状态）：
 
 ```
 $ tsx http-status-monitor.mts --once --urls-file ./urls.txt --verbose
@@ -65,7 +65,7 @@ Checking https://blog.example.com/ ...
 [NEW    ] https://blog.example.com/  c2d3b2b59402
 ```
 
-Second run (no changes):
+第二次运行（没有变化）：
 
 ```
 $ tsx http-status-monitor.mts --once --urls-file ./urls.txt --verbose
@@ -74,7 +74,7 @@ Checking https://example.com/ ...
 [ok     ] https://example.com/  94ff97988565
 ```
 
-Detect a change with `--diff`:
+用 `--diff` 检测变化：
 
 ```
 $ tsx http-status-monitor.mts --once --diff --urls "https://blog.example.com/"
@@ -91,7 +91,7 @@ Index: https://blog.example.com/
 +        "url": "https://example.com/cdn-cgi/l/email-protection#8bedfee6e2f2ea",
 ```
 
-Inline URLs:
+直接指定 URL：
 
 ```
 $ tsx http-status-monitor.mts --once --urls "https://example.com/,https://blog.example.com/"
@@ -99,7 +99,7 @@ $ tsx http-status-monitor.mts --once --urls "https://example.com/,https://blog.e
 [ok     ] https://blog.example.com/  c2d3b2b59402
 ```
 
-Watch mode (runs forever, sleeps between each cycle):
+监视模式（持续运行，每轮之间等待）：
 
 ```
 $ tsx http-status-monitor.mts --urls-file ./urls.txt --verbose
@@ -107,7 +107,7 @@ $ tsx http-status-monitor.mts --urls-file ./urls.txt --verbose
 Sleeping 3600s until next run...
 ```
 
-VictoriaMetrics output:
+VictoriaMetrics 输出：
 
 ```
 $ tsx http-status-monitor.mts --once --victoriametrics --urls "https://example.com/"
@@ -120,25 +120,25 @@ $ cat ./data/victoriametrics/2026-05/results.jsonl
 ...
 ```
 
-## How it works
+## 工作原理
 
-Each run passes the URL to lychee with `--format json --scheme https --accept 200 --method get`. The JSON output is normalized (dynamic fields stripped, arrays sorted deterministically) and hashed. The hash is compared against the previous run's state stored at `./data/state/<url-hash>.json`.
+每次运行都会以 `--format json --scheme https --accept 200 --method get` 把 URL 交给 lychee。JSON 输出经过规范化（去掉动态字段、按确定的顺序排序数组）后再计算哈希，并与保存在 `./data/state/<url-hash>.json` 中的上一次状态比较。
 
-- `[NEW]`: first time this URL has been checked
-- `[ok]`: hash matches previous run
-- `[CHANGED]`: hash differs; use `--diff` to see what changed
+- `[NEW]`：第一次检查这个 URL
+- `[ok]`：哈希与上一次一致
+- `[CHANGED]`：哈希不同；用 `--diff` 查看变化内容
 
-The normalizer removes timing fields (`span`, `duration`) and sorts all object arrays by their JSON representation, so the hash is stable across runs when the actual content hasn't changed.
+规范化会去掉计时字段（`span`、`duration`），并按 JSON 表示对所有对象数组排序，因此只要实际内容没有变化，哈希在多次运行之间就会保持稳定。
 
-## Also included
+## 附带工具
 
-normalize-lychee.mts: standalone normalizer. Pipe lychee JSON output through it to get a stable canonical form:
+normalize-lychee.mts：可单独使用的规范化工具。把 lychee 的 JSON 输出通过管道传给它，就能得到稳定的规范形式：
 
 ```sh
 ./lychee --format json https://example.com/ | tsx normalize-lychee.mts | sha256sum
 ```
 
-## License
+## 许可证
 
 Apache 2.0
 

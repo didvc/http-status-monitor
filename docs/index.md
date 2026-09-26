@@ -11,7 +11,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/yuis-ice/http-status-monitor
+      link: https://github.com/didvc/http-status-monitor
 
 features:
   - title: Waterfall-level monitoring

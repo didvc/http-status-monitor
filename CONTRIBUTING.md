@@ -3,7 +3,7 @@
 ## Setup
 
 ```sh
-git clone https://github.com/yuis-ice/http-status-monitor
+git clone https://github.com/didvc/http-status-monitor
 cd http-status-monitor
 npm install
 ```

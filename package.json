@@ -16,7 +16,7 @@
     "cli",
     "status-monitor"
   ],
-  "author": "yuis-ice",
+  "author": "didvc",
   "license": "Apache-2.0",
   "dependencies": {
     "canonicalize": "^3.0.0",

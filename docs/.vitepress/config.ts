@@ -52,17 +52,17 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/yuis-ice/http-status-monitor/edit/main/docs/:path',
+      pattern: 'https://github.com/didvc/http-status-monitor/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yuis-ice/http-status-monitor' },
+      { icon: 'github', link: 'https://github.com/didvc/http-status-monitor' },
     ],
 
     footer: {
       message: 'Released under the Apache 2.0 License.',
-      copyright: 'Copyright © 2026 yuis-ice',
+      copyright: 'Copyright © 2026 didvc',
     },
   },
 })
